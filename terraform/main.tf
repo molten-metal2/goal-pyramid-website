@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket         = "goal-pyramid-terraform-state"
     key            = "terraform.tfstate"
-    region         = "ap-southeast-2
+    region         = "ap-southeast-2"
     dynamodb_table = "goal-pyramid-terraform-locks"
     encrypt        = true
   }
