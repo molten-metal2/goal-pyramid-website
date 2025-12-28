@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "website-template-terraform-state"  # CUSTOMIZE: Change to a globally unique name
+  bucket = "goal-pyramid-terraform-state"
 }
 
 resource "aws_s3_bucket_versioning" "terraform_state" {
@@ -43,7 +43,7 @@ resource "aws_s3_bucket_public_access_block" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "website-template-terraform-locks"  # CUSTOMIZE: Change to match your project name
+  name         = "goal-pyramid-terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 

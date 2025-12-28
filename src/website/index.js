@@ -1,20 +1,13 @@
-// Main JavaScript for index page
+// Index page - Handle login and routing
 
-// Add your custom JavaScript here
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('Website loaded successfully!');
-  
-  // Add smooth scrolling for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-});
+// Handle OAuth callback (tokens in URL)
+if (auth.parseTokensFromUrl()) {
+  // New login - check if user needs onboarding
+  auth.handlePostLoginRedirect();
+}
+// Check if user is already logged in
+else if (auth.isAuthenticated()) {
+  // Returning user - check if they have a profile
+  auth.handlePostLoginRedirect();
+}
 
