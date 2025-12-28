@@ -40,14 +40,13 @@ resource "aws_cognito_user_pool_client" "main" {
   allowed_oauth_flows                  = ["implicit"]
   allowed_oauth_scopes                 = ["email", "openid", "profile"]
 
-  # PLACEHOLDER: Update these after CloudFront deployment
   callback_urls = [
-    "https://PLACEHOLDER_CLOUDFRONT_URL/index.html",
-    "https://PLACEHOLDER_CLOUDFRONT_URL/"
+    "https://${aws_cloudfront_distribution.website.domain_name}/index.html",
+    "https://${aws_cloudfront_distribution.website.domain_name}/"
   ]
 
   logout_urls = [
-    "https://PLACEHOLDER_CLOUDFRONT_URL/index.html"
+    "https://${aws_cloudfront_distribution.website.domain_name}/index.html"
   ]
 
   supported_identity_providers = ["Google"]
